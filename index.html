@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fahad Fayaz — AI / ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1ea;
+    --ink:#1c1c1a;
+    --soft:#78746c;
+    --line:#ddd8cd;
+    --accent:#b4552d;
+    --card:#faf8f2;
+  }
+  html[data-theme="dark"]{
+    --bg:#141413;
+    --ink:#ecebe6;
+    --soft:#8f8b82;
+    --line:#2a2926;
+    --accent:#e07a4a;
+    --card:#1c1b19;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s,color .3s;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:'JetBrains Mono';font-weight:500;font-size:.85rem;letter-spacing:.5px}
+  .nav-right{display:flex;align-items:center;gap:22px}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{font-family:'JetBrains Mono';font-size:.78rem;color:var(--soft);transition:color .2s}
+  .navlinks a:hover{color:var(--accent)}
+  .theme-btn{background:none;border:1px solid var(--line);border-radius:6px;width:34px;height:30px;
+    cursor:pointer;color:var(--ink);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+  .theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink)}
+
+  /* HERO */
+  header{padding:110px 0 80px}
+  .hero-top{display:flex;align-items:center;gap:28px;margin-bottom:26px}
+  .portrait{width:96px;height:96px;border-radius:50%;overflow:hidden;
+    border:1px solid var(--line);background:var(--card);flex-shrink:0}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+    color:var(--soft);font-family:'JetBrains Mono';font-size:.6rem;text-align:center;padding:8px}
+  .eyebrow{font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:2px;
+    text-transform:uppercase;color:var(--soft)}
+  h1{font-family:'Instrument Serif';font-weight:400;font-size:clamp(3rem,9vw,5rem);
+    line-height:1;letter-spacing:-1px;margin-bottom:20px}
+  .roles{font-family:'JetBrains Mono';font-size:1rem;color:var(--accent);
+    margin-bottom:28px;min-height:1.6em}
+  .roles .cursor{animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lead{color:var(--soft);font-size:1.05rem;max-width:52ch;margin-bottom:34px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{font-family:'JetBrains Mono';font-size:.8rem;padding:10px 18px;border-radius:6px;
+    border:1px solid var(--line);transition:.2s;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn.ghost:hover{border-color:var(--ink)}
+
+  /* SECTION */
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:38px}
+  .sec-num{font-family:'JetBrains Mono';font-size:.74rem;color:var(--accent);display:block;margin-bottom:6px}
+  .sec-title{font-family:'Instrument Serif';font-weight:400;font-size:2rem;letter-spacing:-.5px}
+
+  /* ABOUT */
+  .about p{color:var(--soft);margin-bottom:16px;max-width:60ch}
+  .about p b{color:var(--ink);font-weight:600}
+  .facts{font-family:'JetBrains Mono';font-size:.8rem;margin-top:30px}
+  .facts div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+  .facts div:last-child{border-bottom:none}
+  .facts span:first-child{color:var(--soft)}
+
+  /* SKILLS */
+  .skill-card{margin-bottom:26px}
+  .skill-card:last-child{margin-bottom:0}
+  .skill-card h4{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:1px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.82rem;background:var(--card);border:1px solid var(--line);
+    padding:5px 12px;border-radius:4px;color:var(--ink);transition:.18s;font-family:'JetBrains Mono'}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* EXPERIENCE + EDUCATION */
+  .tl-item{padding:26px 0;border-bottom:1px solid var(--line)}
+  .tl-item:last-child{border-bottom:none}
+  .tl-when{font-family:'JetBrains Mono';font-size:.76rem;color:var(--soft);margin-bottom:8px}
+  .tl-role{font-family:'Instrument Serif';font-weight:400;font-size:1.35rem;margin-bottom:2px}
+  .tl-org{color:var(--accent);font-size:.82rem;font-family:'JetBrains Mono';margin-bottom:14px}
+  .tl-item ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .tl-item li{color:var(--soft);font-size:.92rem;padding-left:18px;position:relative}
+  .tl-item li::before{content:"→";position:absolute;left:0;color:var(--accent);font-size:.8rem}
+
+  /* PROJECTS */
+  .proj{padding:26px 0;border-bottom:1px solid var(--line)}
+  .proj:last-child{border-bottom:none}
+  .proj h3{font-family:'Instrument Serif';font-size:1.45rem;font-weight:400;margin-bottom:4px}
+  .proj .stack{font-family:'JetBrains Mono';font-size:.74rem;color:var(--soft);margin-bottom:12px}
+  .proj p{color:var(--soft);font-size:.92rem;max-width:58ch;margin-bottom:12px}
+  .proj .metrics{font-family:'JetBrains Mono';font-size:.76rem;color:var(--accent);margin-bottom:14px}
+  .proj-links{display:flex;gap:20px}
+  .proj-links a{font-family:'JetBrains Mono';font-size:.78rem;color:var(--soft);transition:.18s}
+  .proj-links a:hover{color:var(--accent)}
+  .proj-links a.live{color:var(--ink);font-weight:500}
+
+  /* CONTACT */
+  .contact{text-align:center;padding:90px 0}
+  .contact h2{font-family:'Instrument Serif';font-size:clamp(2rem,5vw,3rem);
+    font-weight:400;letter-spacing:-.5px;margin-bottom:16px}
+  .contact p{color:var(--soft);max-width:44ch;margin:0 auto 30px}
+  .contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;
+    font-family:'JetBrains Mono';font-size:.74rem;color:var(--soft)}
+
+  @media(max-width:640px){
+    .hero-top{flex-direction:column;align-items:flex-start;gap:18px}
+    .cta-row,.contact-row{justify-content:flex-start}
+    .navlinks{display:none;position:absolute;top:60px;left:0;right:0;background:var(--bg);
+      flex-direction:column;padding:18px 28px;gap:16px;border-bottom:1px solid var(--line)}
+    .navlinks.open{display:flex}
+    .nav-toggle{display:block}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Fahad Fayaz</div>
+    <div class="nav-right">
+      <div class="navlinks" id="nl">
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#education">education</a>
+        <a href="#contact">contact</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="toggle theme">☾</button>
+      <button class="nav-toggle" aria-label="menu" onclick="document.getElementById('nl').classList.toggle('open')">≡</button>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="portrait">
+        <img src="photo.jpg" alt="Fahad Fayaz"
+             onerror="this.style.display='none';this.parentNode.querySelector('.ph').style.display='flex'">
+        <div class="ph" style="display:none">photo.jpg<br>not found</div>
+      </div>
+      <div class="eyebrow">Anantnag, J&amp;K · India</div>
+    </div>
+    <h1>Fahad Fayaz</h1>
+    <div class="roles" id="roles"><span class="cursor">▌</span></div>
+    <p class="lead">I build and ship end-to-end AI systems — from RAG-powered assistants to satellite change detection — and put them into production with LangGraph, PyTorch, and FastAPI.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn ghost" href="Fahad_Fayaz_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn ghost" href="https://github.com/88FaHaD" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01 — about</span><h2 class="sec-title">About</h2></div>
+    <div class="about">
+      <p>I'm a Computer Science graduate working as an <b>AI / ML engineer</b>, covering the full lifecycle — building LLM-powered systems, training deep learning models, and deploying them as real services.</p>
+      <p>I work hands-on with the modern <b>LLM stack</b> — LangGraph, RAG, FAISS, and Hugging Face — building agentic systems and retrieval assistants. Alongside that, at <b>Sabudh Foundation</b> I built a UCDNet change-detection pipeline for multi-band Sentinel-2 imagery.</p>
+      <p>I care about the part most demos skip: getting a model out of the notebook and into production.</p>
+      <div class="facts">
+        <div><span>Focus</span><span>AI Eng · ML · DS</span></div>
+        <div><span>Currently</span><span>Sabudh Foundation</span></div>
+        <div><span>Core stack</span><span>Python · LangGraph</span></div>
+        <div><span>Ships with</span><span>FastAPI · Streamlit</span></div>
+        <div><span>Degree</span><span>B.Tech CSE</span></div>
+        <div><span>Status</span><span style="color:var(--accent)">Open to roles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02 — skills</span><h2 class="sec-title">Skills</h2></div>
+    <div class="skill-card">
+      <h4>AI Engineering / LLMs</h4>
+      <div class="chips">
+        <span class="chip">LangGraph</span><span class="chip">RAG</span>
+        <span class="chip">Agentic Systems</span><span class="chip">FAISS</span>
+        <span class="chip">Hugging Face</span><span class="chip">Sentence Transformers</span>
+        <span class="chip">Vector Search</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Machine Learning &amp; CV</h4>
+      <div class="chips">
+        <span class="chip">Deep Learning</span><span class="chip">Computer Vision</span>
+        <span class="chip">NLP</span><span class="chip">PyTorch</span>
+        <span class="chip">Scikit-learn</span><span class="chip">OpenCV</span>
+        <span class="chip">Feature Engineering</span><span class="chip">Model Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Data &amp; Big Data</h4>
+      <div class="chips">
+        <span class="chip">EDA</span><span class="chip">Pandas</span>
+        <span class="chip">NumPy</span><span class="chip">PySpark</span>
+        <span class="chip">Databricks</span><span class="chip">MySQL</span>
+        <span class="chip">Power BI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Deployment &amp; Tooling</h4>
+      <div class="chips">
+        <span class="chip">FastAPI</span><span class="chip">Streamlit</span>
+        <span class="chip">REST APIs</span><span class="chip">Docker</span>
+        <span class="chip">Git / GitHub</span><span class="chip">AWS EC2</span>
+        <span class="chip">AWS S3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03 — experience</span><h2 class="sec-title">Experience</h2></div>
+    <div class="tl-item">
+      <div class="tl-when">Jan 2026 — Jun 2026 · Remote</div>
+      <div class="tl-role">Data Science Intern</div>
+      <div class="tl-org">Sabudh Foundation</div>
+      <ul>
+        <li>Built a UCDNet model for 512×512×13 multi-band Sentinel-2 imagery — 99.12% accuracy, 87.62% F1, 93.94% recall, 79.47% Jaccard across 24 cities.</li>
+        <li>Created a visual search &amp; retrieval system extracting deep feature embeddings for content-based retrieval of spectrally similar regions.</li>
+        <li>Designed the end-to-end PyTorch pipeline: multi-temporal preprocessing, training, and evaluation on large-scale geospatial data.</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-when">Jul 2025 — Dec 2025 · Srinagar · Hybrid</div>
+      <div class="tl-role">Data Science Intern</div>
+      <div class="tl-org">Purple Rocket</div>
+      <ul>
+        <li>Built and evaluated image classification models across the full pipeline — preprocessing, training, evaluation.</li>
+        <li>Ran exploratory and business-focused analysis on structured data to surface actionable insights.</li>
+        <li>Deployed trained models as FastAPI REST APIs for real-time inference.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04 — projects</span><h2 class="sec-title">Projects</h2></div>
+
+    <div class="proj">
+      <h3>PolicyBot — Enterprise Knowledge Assistant</h3>
+      <div class="stack">LangGraph · FAISS · Streamlit · Hugging Face</div>
+      <p>A RAG-based Q&amp;A chatbot answering natural-language questions over uploaded company documents, grounded in source text with persistent multi-session history.</p>
+      <div class="metrics">FAISS vector search · Qwen 2.5</div>
+      <div class="proj-links">
+        <a class="live" href="https://policybot-rag-assistant.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+        <a href="https://github.com/88FaHaD/policybot-rag-assistant" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>UCDNet — Satellite Change Detection</h3>
+      <div class="stack">PyTorch · FastAPI · Streamlit</div>
+      <p>A deployed app for automated change detection in bi-temporal Sentinel-2 imagery using a UCDNet Siamese encoder-decoder, served live with 53 pre-loaded patches.</p>
+      <div class="metrics">98.6% accuracy · 82.37% F1</div>
+      <div class="proj-links">
+        <!-- TODO: replace with the real UCDNet demo URL -->
+        <a class="live" href="#" target="_blank" rel="noopener">Live demo ↗</a>
+        <a href="https://github.com/88FaHaD/ucdnet-change-detection" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>Bird Safe Guardian — Edge AI</h3>
+      <div class="stack">OpenCV · Raspberry Pi · Python</div>
+      <p>An edge-AI bird detection system running on Raspberry Pi with OpenCV, performing real-time detection on constrained hardware.</p>
+      <div class="metrics">Real-time · On-device inference</div>
+      <div class="proj-links">
+        <a href="https://github.com/88FaHaD/Bird-Safe-guardian" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05 — education</span><h2 class="sec-title">Education</h2></div>
+    <div class="tl-item">
+      <div class="tl-when">2020 — 2024</div>
+      <div class="tl-role">B.Tech in Computer Science &amp; Engineering</div>
+      <div class="tl-org">Islamic University of Science and Technology, J&amp;K</div>
+      <ul>
+        <li>Relevant coursework: Machine Learning, Artificial Intelligence, Data Structures &amp; Algorithms, DBMS, Computer Networks, Operating Systems, Cloud Computing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something.</h2>
+    <p>Open to AI Engineer and ML Engineer roles. The fastest way to reach me is email.</p>
+    <div class="contact-row">
+      <a class="btn primary" href="mailto:fahadfayaz438@gmail.com">fahadfayaz438@gmail.com</a>
+      <a class="btn ghost" href="https://linkedin.com/in/fahadfayaz" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/88FaHaD" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Built by Fahad Fayaz · Anantnag, J&amp;K · <span id="yr"></span></div>
+</footer>
+
+<script>
+  // typed roles — one by one
+  const roles=["AI Engineer","ML Engineer","Data Scientist","Computer Vision Engineer"];
+  const el=document.getElementById('roles');
+  let ri=0,ci=0,del=false;
+  function type(){
+    const w=roles[ri];
+    el.innerHTML=w.substring(0,ci)+'<span class="cursor">▌</span>';
+    if(!del&&ci<w.length){ci++;setTimeout(type,75);}
+    else if(!del&&ci===w.length){del=true;setTimeout(type,1500);}
+    else if(del&&ci>0){ci--;setTimeout(type,38);}
+    else{del=false;ri=(ri+1)%roles.length;setTimeout(type,260);}
+  }
+  type();
+
+  // dark mode toggle
+  const html=document.documentElement;
+  const btn=document.getElementById('themeBtn');
+  function setTheme(t){
+    html.setAttribute('data-theme',t);
+    btn.textContent = t==='dark' ? '☀' : '☾';
+  }
+  setTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  btn.addEventListener('click',()=>{
+    setTheme(html.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  });
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
